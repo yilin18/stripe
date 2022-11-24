@@ -34,12 +34,12 @@ provider.setCustomParameters({
 
 export const auth = getAuth()
 export const signInWithGooglePopup = ()=>signInWithPopup(auth, provider)
+export const signInWithGoogleRedirect = ()=>signInWithRedirect(auth, provider)
 export const db = getFirestore()
 
 export const createUserDocumentFromAuth = async(userAuth) =>{
   const userDocRef = doc(db, 'user', userAuth.uid)
   console.log(userDocRef)
-  
   const userSnapshot = await getDoc(userDocRef)
   if(!userSnapshot.exists()){
     const {displayName, email} = userAuth
